@@ -6,121 +6,149 @@
 <title>Axé Turismo & Aventura</title>
 
 <style>
-body {margin:0;font-family:Arial;background:#fff;color:#1e293b}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f5f7f6;
+}
 
-/* HEADER */
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-border-bottom:1px solid #eee;
+  background:#0f172a;
+  color:white;
+  padding:20px;
+  text-align:center;
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
+header h1{
+  margin:0;
 }
 
-.logo img{
-width:60px;
-}
-
-header a{
-background:#0f172a;
-color:#fff;
-padding:10px 18px;
-border-radius:8px;
-text-decoration:none;
-}
-
-/* HERO */
 .hero{
-padding:80px 40px;
-text-align:center;
+  padding:40px 20px;
+  text-align:center;
 }
 
-.hero h1{
-font-size:40px;
-}
-
-.hero p{
-color:#555;
+.hero h2{
+  font-size:28px;
 }
 
 .btn{
-background:#0f766e;
-color:#fff;
-padding:14px 24px;
-border-radius:10px;
-text-decoration:none;
-display:inline-block;
-margin-top:20px;
-font-weight:bold;
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 20px;
+  background:#0f172a;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
 }
 
-/* SECTION */
-section{
-padding:60px 40px;
-text-align:center;
-}
-
-/* CARDS */
 .cards{
-<div class="cards">
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+
+.card h3{
+  margin-top:10px;
+}
+
+.whatsapp-fixo{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+  text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Axé Turismo & Aventura</h1>
+<p>Itacaré • Passeios • Translados</p>
+</header>
+
+<section class="hero">
+<h2>Os melhores passeios em Itacaré estão aqui</h2>
+<p>Explore praias, trilhas, cachoeiras e viva experiências únicas.</p>
+<a class="btn" href="https://wa.me/5573999769225?text=Olá,%20quero%20informações%20sobre%20os%20passeios">Falar no WhatsApp</a>
+</section>
+
+<section class="cards">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" style="width:100%; border-radius:10px;">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
 <h3>Passeio das 4 Praias</h3>
 
 <p><strong>📍 Roteiro:</strong><br>
-• Saída de Itacaré<br>
-• Trilha guiada pela mata atlântica<br>
-• Visita às praias: Engenhoca, Havaizinho, Camboinha e Itacarezinho<br>
-• Paradas para banho e fotos<br>
-• Tempo livre para almoço</p>
+• Trilha guiada<br>
+• Praia da Engenhoca<br>
+• Havaizinho<br>
+• Camboinha<br>
+• Itacarezinho<br>
+• Paradas para banho e fotos</p>
 
 <p><strong>⏱ Duração:</strong> 4 a 6 horas</p>
 <p><strong>💰 Valor:</strong> Sob consulta</p>
 
-<a class="btn" href="https://wa.me/5573999769225?text=Quero%20o%20passeio%20das%204%20praias">Reservar pelo WhatsApp</a>
+<a class="btn" href="https://wa.me/5573999769225?text=Quero%20o%20passeio%20das%204%20praias">Reservar</a>
 </div>
 
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21" style="width:100%; border-radius:10px;">
+<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
 <h3>Passeio das Ilhas</h3>
 
 <p><strong>📍 Roteiro:</strong><br>
 • Saída de barco<br>
-• Visita às ilhas da região<br>
-• Paradas para banho em piscinas naturais<br>
-• Observação da vida marinha<br>
-• Parada para almoço em restaurante local</p>
+• Ilhas da região<br>
+• Piscinas naturais<br>
+• Paradas para banho<br>
+• Restaurante local</p>
 
-<p><strong>⏱ Duração:</strong> Meio período ou dia inteiro</p>
+<p><strong>⏱ Duração:</strong> Meio período / dia inteiro</p>
 <p><strong>💰 Valor:</strong> Sob consulta</p>
 
-<a class="btn" href="https://wa.me/5573999769225?text=Quero%20o%20passeio%20das%20ilhas">Reservar pelo WhatsApp</a>
+<a class="btn" href="https://wa.me/5573999769225?text=Quero%20o%20passeio%20das%20ilhas">Reservar</a>
 </div>
 
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" style="width:100%; border-radius:10px;">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
 <h3>Trilha + Cachoeira</h3>
 
 <p><strong>📍 Roteiro:</strong><br>
-• Saída com guia local<br>
-• Trilha em meio à natureza<br>
-• Visita a cachoeiras da região<br>
-• Paradas para banho<br>
-• Tempo livre para descanso e fotos</p>
+• Trilha na mata<br>
+• Cachoeiras<br>
+• Banho natural<br>
+• Fotos e descanso</p>
 
 <p><strong>⏱ Duração:</strong> 3 a 5 horas</p>
 <p><strong>💰 Valor:</strong> Sob consulta</p>
 
-<a class="btn" href="https://wa.me/5573999769225?text=Quero%20trilha%20com%20cachoeira">Reservar pelo WhatsApp</a>
+<a class="btn" href="https://wa.me/5573999769225?text=Quero%20trilha%20com%20cachoeira">Reservar</a>
 </div>
 
-</div>
+</section>
+
+<a class="whatsapp-fixo" href="https://wa.me/5573999769225">📲</a>
+
+</body>
+</html>
