@@ -1,192 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Axé Turismo & Aventura</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axé Turismo & Aventura</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #1e293b;
+}
 
-    header {
-      background: #0f766e;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid #eee;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
+header h1 {
+  margin: 0;
+}
 
-    header p {
-      margin-top: 10px;
-      font-size: 16px;
-    }
+header a {
+  background: #0f172a;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+}
 
-    section {
-      padding: 30px;
-      text-align: center;
-    }
+/* HERO */
+.hero {
+  padding: 80px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
 
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin: 10px 0;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
+.hero h2 {
+  font-size: 42px;
+}
 
-    .btn {
-      background: #16a34a;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-      font-weight: bold;
-    }
+.hero p {
+  font-size: 18px;
+  color: #555;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #777;
-    }
-  </style>
+.btn {
+  background: #0f172a;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 20px;
+  background: #f1f5f9;
+}
+
+.card.dark {
+  background: #0f766e;
+  color: white;
+}
+
+/* SECTION */
+section {
+  padding: 80px 40px;
+}
+
+/* SERVICES */
+.services {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+.service {
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* CTA */
+.cta {
+  background: linear-gradient(45deg,#10b981,#0f766e);
+  color: white;
+  padding: 60px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero,
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>Axé Turismo & Aventura</h1>
-  <p>Itacaré • Passeios • Translados</p>
+  <a href="https://wa.me/5573999769225?text=Ol%C3%A1%2C%20quero%20reservar%20um%20passeio" target="_blank">
+    Reservar no WhatsApp
+  </a>
 </header>
 
+<div class="hero">
+  <div>
+    <h2>Os melhores passeios em Itacaré estão aqui.</h2>
+    <p>
+      Viva experiências únicas em praias, trilhas e cachoeiras com segurança,
+      conforto e atendimento personalizado.
+    </p>
+
+    <a class="btn" href="https://wa.me/5573999769225?text=Ol%C3%A1%2C%20quero%20mais%20informa%C3%A7%C3%B5es" target="_blank">
+      Solicitar informações
+    </a>
+  </div>
+
+  <div class="cards">
+    <div class="card dark">
+      <h3>Passeios</h3>
+      <p>Roteiros inesquecíveis em Itacaré</p>
+    </div>
+
+    <div class="card dark">
+      <h3>Translados</h3>
+      <p>Mais conforto no trajeto</p>
+    </div>
+
+    <div class="card">
+      <h3>Atendimento</h3>
+      <p>Suporte rápido e personalizado</p>
+    </div>
+
+    <div class="card">
+      <h3>Experiência</h3>
+      <p>Conheça Itacaré de verdade</p>
+    </div>
+  </div>
+</div>
+
 <section>
-  <div class="box">
-    <h2>Os melhores passeios em Itacaré</h2>
-    <p>Explore praias paradisíacas, trilhas e cachoeiras com conforto e segurança.</p>
-  </div>
-
-  <div class="box">
-    <h2>Translados com conforto</h2>
-    <p>Viagens seguras de e para Itacaré com atendimento profissional.</p>
-  </div>
-
-  <div class="box">
-    <h2>Atendimento rápido</h2>
-    <p>Fale direto conosco no WhatsApp e reserve seu passeio.</p>
-  </div>
-
-  <a class="btn" href="https://wa.me/5573999769225?text=Ol%C3%A1%2C%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20passeios%20em%20Itacar%C3%A9" target="_blank">
-    Reservar pelo WhatsApp
-  </a>
+  <h2>Sobre nós</h2>
+  <p>
+    Somos especialistas em turismo em Itacaré, oferecendo passeios, trilhas,
+    cachoeiras e translados com segurança e qualidade.
+  </p>
 </section>
 
-<footer>
-  © 2026 Axé Turismo & Aventura
-</footer>
+<section>
+  <h2>Nossos serviços</h2>
+
+  <div class="services">
+    <div class="service">
+      <h3>Trilhas</h3>
+      <p>Natureza e aventura</p>
+    </div>
+
+    <div class="service">
+      <h3>Praias</h3>
+      <p>Roteiros paradisíacos</p>
+    </div>
+
+    <div class="service">
+      <h3>Ilhas</h3>
+      <p>Passeios exclusivos</p>
+    </div>
+
+    <div class="service">
+      <h3>Translados</h3>
+      <p>Conforto e segurança</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta">
+    <div>
+      <h2>Fale agora com a Axé Turismo</h2>
+      <p>Monte seu roteiro e reserve seu passeio.</p>
+    </div>
+
+    <a class="btn" href="https://wa.me/5573999769225?text=Ol%C3%A1%2C%20quero%20reservar%20um%20passeio" target="_blank">
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
 
 </body>
-</html>iv>
-      <div class="about-text">
-        Somos a Axé Turismo & Aventura, uma empresa focada em proporcionar momentos inesquecíveis
-        para quem deseja conhecer o melhor de Itacaré e região. Trabalhamos com passeios, praias,
-        trilhas, cachoeiras e translados, sempre com atendimento próximo, organização e foco total
-        na experiência do cliente.
-      </div>
-    </div>
-  </section>
-
-  <section class="services" id="passeios">
-    <div class="container">
-      <div class="services-top">
-        <div class="section-title">
-          <small>Nossos serviços</small>
-          <h2>Tudo o que você precisa para viver Itacaré.</h2>
-        </div>
-        <a class="btn btn-outline" href="https://wa.me/5500000000000" target="_blank">Solicitar informações</a>
-      </div>
-
-      <div class="grid-4">
-        <div class="service-box">
-          <span class="pill">Natureza e aventura</span>
-          <h3>Trilhas e Cachoeiras</h3>
-          <p>Explore cenários incríveis com contato direto com a natureza, paradas para fotos e experiências inesquecíveis.</p>
-        </div>
-
-        <div class="service-box">
-          <span class="pill">Roteiros imperdíveis</span>
-          <h3>Praias Paradisíacas</h3>
-          <p>Visite as praias mais procuradas de Itacaré e região com conforto, segurança e apoio local.</p>
-        </div>
-
-        <div class="service-box">
-          <span class="pill">Experiência exclusiva</span>
-          <h3>Passeio das Ilhas</h3>
-          <p>Um roteiro especial para quem quer viver o melhor do litoral baiano com paisagens únicas.</p>
-        </div>
-
-        <div class="service-box">
-          <span class="pill">Conforto no trajeto</span>
-          <h3>Translados</h3>
-          <p>Saídas e chegadas com praticidade para Itacaré e outras cidades, com atendimento organizado e confiável.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container why">
-      <div>
-        <small>Por que escolher a Axé</small>
-        <h2>Um atendimento que valoriza sua viagem do início ao fim.</h2>
-      </div>
-      <div class="why-list">
-        <div class="why-item">Atendimento rápido e humanizado</div>
-        <div class="why-item">Roteiros pensados para cada perfil de cliente</div>
-        <div class="why-item">Suporte antes, durante e após a reserva</div>
-        <div class="why-item">Experiência local em Itacaré e região</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="section-title">
-        <small>Depoimentos</small>
-        <h2>Quem viaja com a gente, recomenda.</h2>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="testimonial">
-          <p>“Atendimento excelente do início ao fim. Passeio bem organizado, pontual e com total atenção aos detalhes.”</p>
-          <strong>Mariana S.</strong>
-        </div>
-
-        <div class="testimonial">
-          <p>“Fechamos translado e passeio. Foi tudo muito tranquilo e passou muita confiança. Recomendo demais.”</p>
-          <strong>Carlos e família</strong>
-        </div>
-
-        <div class="testimonial">
-          <p>“Foi uma experiência linda em Itacaré. A equipe foi atenciosa e deixou nossa viagem muito mais leve.”</p>
-          <strong>Juliana R.</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container cta-box">
-      <div>
-        <small>Pronto para reservar?</small>
-        <h
+</html>
