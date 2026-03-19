@@ -6,75 +6,57 @@
 <title>Axé Turismo & Aventura</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f5f7f6;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0b0b;
+  color: #fff;
 }
 
-header{
-  background:#0f172a;
-  color:white;
-  padding:20px;
-  text-align:center;
+header {
+  background: linear-gradient(90deg,#ff9900,#ff3300);
+  text-align: center;
+  padding: 30px;
 }
 
-header h1{
-  margin:0;
+h1 { margin: 0; }
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
 
-.hero{
-  padding:40px 20px;
-  text-align:center;
+.card {
+  background: #1a1a1a;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.hero h2{
-  font-size:28px;
+.card h2 {
+  color: #00ff88;
 }
 
-.btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 20px;
-  background:#0f172a;
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
+.section-title {
+  color: #ffcc00;
+  margin-top: 15px;
 }
 
-.cards{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:20px;
-  padding:20px;
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
 }
 
-.card{
-  background:white;
-  border-radius:12px;
-  padding:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.card img{
-  width:100%;
-  border-radius:10px;
-}
-
-.card h3{
-  margin-top:10px;
-}
-
-.whatsapp-fixo{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:white;
-  padding:15px;
-  border-radius:50%;
-  font-size:20px;
-  text-decoration:none;
+footer {
+  background: #111;
+  text-align: center;
+  padding: 20px;
 }
 </style>
 
@@ -84,71 +66,181 @@ header h1{
 
 <header>
 <h1>Axé Turismo & Aventura</h1>
-<p>Itacaré • Passeios • Translados</p>
+<p>Os melhores passeios em Itacaré</p>
 </header>
 
-<section class="hero">
-<h2>Os melhores passeios em Itacaré estão aqui</h2>
-<p>Explore praias, trilhas, cachoeiras e viva experiências únicas.</p>
-<a class="btn" href="https://wa.me/5573999769225?text=Olá,%20quero%20informações%20sobre%20os%20passeios">Falar no WhatsApp</a>
-</section>
+<div class="container">
 
-<section class="cards">
-
+<!-- JERIBUCAÇÚ -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
-<h3>Passeio das 4 Praias</h3>
+<h2>🌿 Jeribucaçú + Cachoeira da Usina</h2>
 
-<p><strong>📍 Roteiro:</strong><br>
-• Trilha guiada<br>
-• Praia da Engenhoca<br>
-• Havaizinho<br>
-• Camboinha<br>
-• Itacarezinho<br>
-• Paradas para banho e fotos</p>
+<p>
+Trilha leve com cachoeira e uma das praias mais paradisíacas de Itacaré.
+</p>
 
-<p><strong>⏱ Duração:</strong> 4 a 6 horas</p>
-<p><strong>💰 Valor:</strong> Sob consulta</p>
+<h3 class="section-title">📍 Roteiro</h3>
+<ul>
+<li>Caminhada até Cachoeira da Usina</li>
+<li>Parada para banho (1h)</li>
+<li>Trilha até Praia de Jeribucaçú</li>
+<li>Tarde livre na praia</li>
+</ul>
 
-<a class="btn" href="https://wa.me/5573999769225?text=Quero%20o%20passeio%20das%204%20praias">Reservar</a>
+<h3 class="section-title">⏰ Informações</h3>
+<p>Saída: 09:15 | Retorno: 16:30</p>
+<p>Duração: Meio período</p>
+
+<h3 class="section-title">💰 Valor</h3>
+<p>R$ 120,00 por pessoa</p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
 </div>
 
+<!-- 4 PRAIAS -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
-<h3>Passeio das Ilhas</h3>
+<h2>🏝️ Trilha das 4 Praias</h2>
 
-<p><strong>📍 Roteiro:</strong><br>
-• Saída de barco<br>
-• Ilhas da região<br>
-• Piscinas naturais<br>
-• Paradas para banho<br>
-• Restaurante local</p>
+<p>Conheça 4 praias paradisíacas + cachoeira.</p>
 
-<p><strong>⏱ Duração:</strong> Meio período / dia inteiro</p>
-<p><strong>💰 Valor:</strong> Sob consulta</p>
+<h3 class="section-title">📍 Paradas</h3>
+<ul>
+<li>Itacarezinho</li>
+<li>Camboinha</li>
+<li>Havaizinho</li>
+<li>Engenhoca</li>
+<li>Cachoeira do Tijuípe</li>
+</ul>
 
-<a class="btn" href="https://wa.me/5573999769225?text=Quero%20o%20passeio%20das%20ilhas">Reservar</a>
+<p><b>💰 A partir de R$ 120,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
 </div>
 
+<!-- ILHAS -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
-<h3>Trilha + Cachoeira</h3>
+<h2>🚤 Ilhas da Baía de Camamu</h2>
 
-<p><strong>📍 Roteiro:</strong><br>
-• Trilha na mata<br>
-• Cachoeiras<br>
-• Banho natural<br>
-• Fotos e descanso</p>
+<p>Passeio de lancha pelas ilhas mais bonitas da Bahia.</p>
 
-<p><strong>⏱ Duração:</strong> 3 a 5 horas</p>
-<p><strong>💰 Valor:</strong> Sob consulta</p>
+<h3 class="section-title">📍 Pontos</h3>
+<ul>
+<li>Ilha da Pedra Furada</li>
+<li>Ponta do Mutá</li>
+<li>Barra Grande</li>
+<li>Taipu de Fora</li>
+</ul>
 
-<a class="btn" href="https://wa.me/5573999769225?text=Quero%20trilha%20com%20cachoeira">Reservar</a>
+<p><b>💰 R$ 260,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
 </div>
 
-</section>
+<!-- BOIPEBA -->
+<div class="card">
+<h2>🌊 Boipeba</h2>
 
-<a class="whatsapp-fixo" href="https://wa.me/5573999769225">📲</a>
+<p>Um dos destinos mais paradisíacos do Brasil.</p>
+
+<p><b>💰 R$ 450,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
+</div>
+
+<!-- MORRO -->
+<div class="card">
+<h2>🏖️ Morro de São Paulo</h2>
+
+<ul>
+<li>Primeira Praia</li>
+<li>Segunda Praia</li>
+<li>Terceira Praia</li>
+<li>Quarta Praia</li>
+</ul>
+
+<p><b>💰 R$ 450,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
+</div>
+
+<!-- CLEANDRO -->
+<div class="card">
+<h2>💧 Cachoeira do Cleandro</h2>
+
+<ul>
+<li>Navegação pelo Rio de Contas</li>
+<li>Trilha leve</li>
+<li>Banho de cachoeira</li>
+</ul>
+
+<p><b>💰 R$ 150,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
+</div>
+
+<!-- CITY TOUR -->
+<div class="card">
+<h2>🏛️ City Tour Ilhéus</h2>
+
+<ul>
+<li>Chocolate caseiro</li>
+<li>Catedral</li>
+<li>Mercado</li>
+<li>Bataclan</li>
+</ul>
+
+<p><b>💰 R$ 200,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
+</div>
+
+<!-- VILA ROSA -->
+<div class="card">
+<h2>🌱 Fazenda Vila Rosa</h2>
+
+<ul>
+<li>Processo do cacau</li>
+<li>Degustação</li>
+<li>Trilha leve</li>
+</ul>
+
+<p><b>💰 R$ 150,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
+</div>
+
+<!-- RAFTING -->
+<div class="card">
+<h2>🚣 Rafting</h2>
+
+<ul>
+<li>Corredeiras</li>
+<li>Instrutores</li>
+<li>Equipamentos completos</li>
+</ul>
+
+<p><b>💰 R$ 200,00</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Reservar</a>
+</div>
+
+<!-- TRANSLADOS -->
+<div class="card">
+<h2>🚐 Translados</h2>
+
+<p>Transporte com conforto, segurança e pontualidade.</p>
+
+<p><b>💰 Sob consulta</b></p>
+
+<a class="btn" href="https://wa.me/5573999769225">Solicitar</a>
+</div>
+
+</div>
+
+<footer>
+📍 Rua Pedro Longo, Pituba - Itacaré/BA<br>
+📞 73 99976-9225
+</footer>
 
 </body>
 </html>
