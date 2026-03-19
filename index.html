@@ -1,491 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Axé Turismo & Aventura</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
     body {
-      background: #ffffff;
-      color: #1e293b;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
     }
 
     header {
-      background: rgba(255,255,255,0.95);
-      border-bottom: 1px solid #e2e8f0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      gap: 15px;
-    }
-
-    .logo h1 {
-      font-size: 24px;
-      color: #0f172a;
-    }
-
-    .logo p {
-      font-size: 14px;
-      color: #64748b;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #0f172a;
+      background: #0f766e;
       color: white;
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-weight: bold;
-      transition: 0.2s;
+      padding: 40px 20px;
+      text-align: center;
     }
 
-    .btn:hover {
-      opacity: 0.92;
+    header h1 {
+      margin: 0;
+      font-size: 28px;
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 1px solid #cbd5e1;
-      color: #334155;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #ecfdf5, #ffffff, #ecfeff);
-      padding: 70px 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .hero h2 {
-      font-size: 54px;
-      line-height: 1.1;
-      color: #0f172a;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #475569;
-      margin-bottom: 28px;
-      max-width: 650px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .stat {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 24px;
-      color: #0f172a;
-    }
-
-    .stat span {
-      font-size: 14px;
-      color: #64748b;
-    }
-
-    .hero-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .card {
-      border-radius: 26px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-    }
-
-    .card small {
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      opacity: 0.85;
-      font-size: 12px;
-    }
-
-    .card h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 15px;
-    }
-
-    .card-green {
-      background: linear-gradient(135deg, #134e4a, #0f766e);
-      color: white;
-    }
-
-    .card-blue {
-      background: linear-gradient(135deg, #0f172a, #334155);
-      color: white;
-      margin-top: 30px;
-    }
-
-    .card-light {
-      background: white;
-      border: 1px solid #e2e8f0;
-      margin-top: -30px;
-    }
-
-    .card-mint {
-      background: #ecfdf5;
-      border: 1px solid #d1fae5;
+    header p {
+      margin-top: 10px;
+      font-size: 16px;
     }
 
     section {
-      padding: 80px 0;
+      padding: 30px;
+      text-align: center;
     }
 
-    .section-title small {
-      color: #047857;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
-
-    .section-title h2 {
-      font-size: 42px;
-      color: #0f172a;
-      margin-top: 12px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .about-text {
-      font-size: 18px;
-      color: #475569;
-    }
-
-    .services {
-      background: #f8fafc;
-    }
-
-    .services-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin-bottom: 35px;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .service-box {
+    .box {
       background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-    }
-
-    .pill {
-      display: inline-block;
-      background: #ecfdf5;
-      color: #047857;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 14px;
-    }
-
-    .service-box h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
-      color: #0f172a;
-    }
-
-    .service-box p {
-      color: #475569;
-    }
-
-    .why {
-      background: #0f172a;
-      color: white;
-      border-radius: 30px;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-
-    .why small {
-      color: #86efac;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
-
-    .why h2 {
-      font-size: 40px;
-      margin-top: 14px;
-    }
-
-    .why-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .why-item {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 35px;
-    }
-
-    .testimonial {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 24px;
-      padding: 24px;
-    }
-
-    .testimonial p {
-      color: #475569;
-      margin-bottom: 14px;
-    }
-
-    .testimonial strong {
-      color: #0f172a;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .cta-box {
-      background: linear-gradient(135deg, #10b981, #0f766e);
-      color: white;
-      border-radius: 30px;
-      padding: 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .cta-box h2 {
-      font-size: 42px;
+      padding: 20px;
+      border-radius: 12px;
       margin: 10px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
-    .cta-box p {
-      max-width: 700px;
-      color: #ecfeff;
-    }
-
-    .cta-box .btn {
-      background: white;
-      color: #0f172a;
+    .btn {
+      background: #16a34a;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: bold;
     }
 
     footer {
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
-      padding: 28px 0;
-      color: #64748b;
-      font-size: 14px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .about-grid,
-      .why,
-      .grid-4,
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h2,
-      .section-title h2,
-      .why h2,
-      .cta-box h2 {
-        font-size: 34px;
-      }
-
-      .hero-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .card-blue,
-      .card-light {
-        margin-top: 0;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .services-top,
-      .cta-box,
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #777;
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="container topbar">
-      <div class="logo">
-        <h1>Axé Turismo & Aventura</h1>
-        <p>Itacaré • Passeios • Translados</p>
-      </div>
-      <a class="btn" href="href="https://wa.me/5573999769225" target="_blank">Reservar agora no WhatsApp</a>
-    </div>
-  </header>
+<header>
+  <h1>Axé Turismo & Aventura</h1>
+  <p>Itacaré • Passeios • Translados</p>
+</header>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="badge">Viva o melhor de Itacaré com quem conhece o destino</span>
-        <h2>Os melhores passeios em Itacaré estão aqui.</h2>
-        <p>
-          Explore praias paradisíacas, trilhas, cachoeiras e translados com segurança,
-          conforto e atendimento personalizado. Você sonha, a gente realiza.
-        </p>
-        <div class="hero-buttons">
-          <a class="btn" href="https://wa.me/5573999769225" target="_blank">Falar com a equipe</a>
-          <a class="btn btn-outline" href="#passeios">Ver passeios</a>
-        </div>
+<section>
+  <div class="box">
+    <h2>Os melhores passeios em Itacaré</h2>
+    <p>Explore praias paradisíacas, trilhas e cachoeiras com conforto e segurança.</p>
+  </div>
 
-        <div class="stats">
-          <div class="stat">
-            <strong>100%</strong>
-            <span>Foco em atendimento</span>
-          </div>
-          <div class="stat">
-            <strong>Local</strong>
-            <span>Experiência em Itacaré</span>
-          </div>
-          <div class="stat">
-            <strong>Rápido</strong>
-            <span>Atendimento no WhatsApp</span>
-          </div>
-        </div>
-      </div>
+  <div class="box">
+    <h2>Translados com conforto</h2>
+    <p>Viagens seguras de e para Itacaré com atendimento profissional.</p>
+  </div>
 
-      <div class="hero-cards">
-        <div class="card card-green">
-          <small>Passeios</small>
-          <h3>Roteiros inesquecíveis</h3>
-          <p>Praias, cachoeiras, trilhas e experiências para quem quer viver Itacaré de verdade.</p>
-        </div>
+  <div class="box">
+    <h2>Atendimento rápido</h2>
+    <p>Fale direto conosco no WhatsApp e reserve seu passeio.</p>
+  </div>
 
-        <div class="card card-blue">
-          <small>Translados</small>
-          <h3>Mais conforto no trajeto</h3>
-          <p>Atendimento organizado para chegadas e saídas, ligando Itacaré a outras cidades com praticidade.</p>
-        </div>
+  <a class="btn" href="https://wa.me/5573999769225?text=Ol%C3%A1%2C%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20passeios%20em%20Itacar%C3%A9" target="_blank">
+    Reservar pelo WhatsApp
+  </a>
+</section>
 
-        <div class="card card-light">
-          <small>Atendimento</small>
-          <h3>Suporte personalizado</h3>
-          <p>Cada cliente recebe orientação para escolher o passeio ideal de acordo com o perfil da viagem.</p>
-        </div>
+<footer>
+  © 2026 Axé Turismo & Aventura
+</footer>
 
-        <div class="card card-mint">
-          <small>Axé Turismo</small>
-          <h3>Bahia, natureza e experiência</h3>
-          <p>Mais do que vender passeios, nossa missão é criar memórias especiais em cada roteiro.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container about-grid">
-      <div class="section-title">
-        <small>Sobre nós</small>
-        <h2>Experiências únicas em Itacaré com segurança, atenção e confiança.</h2>
-      </div>
+</body>
+</html>iv>
       <div class="about-text">
         Somos a Axé Turismo & Aventura, uma empresa focada em proporcionar momentos inesquecíveis
         para quem deseja conhecer o melhor de Itacaré e região. Trabalhamos com passeios, praias,
