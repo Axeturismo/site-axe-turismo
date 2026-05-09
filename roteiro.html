@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+    recomendacoes:['Calçado confortável','Roupas leves','Protetor solar','Repelente','Toalha','Roupa de banho'],
+    fotos:['./images/4-praias.jpg','./images/jeribucacu.jpg','./images/hero-itacare.jpg']
+  },
+  jeribucacu:{
+    titulo:'Jeribucaçu + Cachoeira da Usina', categoria:'Trilha, Mangue e Praia', img:'./images/jeribucacu.jpg', valor:'A partir de R$120 por pessoa', horario:'Saída 09h15 | Retorno 16h30', nivel:'Moderado', local:'Praia de Jeribucaçu e Cachoeira da Usina',
+    resumo:'Uma das trilhas mais completas de Itacaré, com cachoeira, manguezal, Mata Atlântica e praia paradisíaca.',
+    descricao:'O passeio começa com trilha até a Cachoeira da Usina e segue pela Mata Atlântica até a Praia de Jeribucaçu, passando por manguezal e cenários naturais incríveis.',
+    roteiro:['Embarque na pousada','Trilha até a Cachoeira da Usina','Parada para banho e fotos','Trilha pela Mata Atlântica','Passagem pelo manguezal','Chegada à Praia de Jeribucaçu','Tempo livre na praia','Retorno pela trilha'],
+    recomendacoes:['Calçado confortável para trilha','Roupa de banho','Protetor solar','Repelente','Toalha','Evitar para pessoas com mobilidade reduzida'],
+    fotos:['./images/jeribucacu.jpg','./images/4-praias.jpg','./images/hero-itacare.jpg']
+  },
+  rafting:{
+    titulo:'Rafting', categoria:'Aventura', img:'./images/rafting.jpg', valor:'R$200 por pessoa', horario:'10h às 13h30', nivel:'Aventura moderada', local:'Rio de Contas, Taboquinhas',
+    resumo:'Adrenalina e diversão no Rio de Contas com instrutores e equipamentos de segurança.',
+    descricao:'O rafting acontece em Taboquinhas, com descida pelas corredeiras do Rio de Contas, alternando momentos de adrenalina e contemplação da natureza.',
+    roteiro:['Embarque na pousada','Transporte até Taboquinhas','Recepção e equipamentos','Aula de segurança','Descida de 3 a 4 km pelo Rio de Contas','Salto opcional no rio','Retorno para Itacaré'],
+    recomendacoes:['Roupa que possa molhar','Sandália fechada ou tênis','Protetor solar','Repelente','Dinheiro ou cartão para extras'],
+    fotos:['./images/rafting.jpg','./images/jeribucacu.jpg','./images/4-praias.jpg']
+  },
+  boipeba:{
+    titulo:'Ilha de Boipeba', categoria:'Destino Premium', img:'./images/boipeba.jpg', valor:'A partir de R$550 por pessoa', horario:'Saída 06h | Retorno no final da tarde', nivel:'Leve', local:'Boipeba, Moreré, Bainema e Castelhanos',
+    resumo:'Um dia inesquecível em Boipeba, com águas cristalinas, piscinas naturais e paisagens paradisíacas.',
+    descricao:'Saída de Itacaré com destino a Cairu/Valença, embarque em lancha rápida e roteiro por alguns dos pontos mais bonitos de Boipeba.',
+    roteiro:['Saída de Itacaré às 06h','Lancha rápida para Boipeba','Piscinas naturais de Moreré','Praia de Bainema','Ponta dos Castelhanos','Bancada de Areia','Cova da Onça','Retorno no final da tarde'],
+    recomendacoes:['Roupa de banho','Toalha','Protetor solar','Óculos de sol','Dinheiro ou cartão para extras'],
+    fotos:['./images/boipeba.jpg','./images/passeio-ilhas.jpg','./images/morro.jpg']
+  },
+  morro:{
+    titulo:'Morro de São Paulo', categoria:'Praias e Piscinas Naturais', img:'./images/morro.jpg', valor:'A partir de R$500 por pessoa + taxa local', horario:'Saída 06h | Retorno no início da noite', nivel:'Leve', local:'Morro de São Paulo',
+    resumo:'Conheça um dos destinos mais famosos da Bahia em um roteiro de praias, piscinas naturais e vila turística.',
+    descricao:'O passeio inclui deslocamento terrestre até Valença e travessia de lancha rápida até Morro de São Paulo, onde o visitante aproveita praias famosas e piscinas naturais.',
+    roteiro:['Saída de Itacaré às 06h','Deslocamento até Valença','Lancha rápida até Morro','Primeira Praia','Segunda Praia','Terceira Praia','Quarta Praia','Retorno às 16h'],
+    recomendacoes:['Roupa de banho','Protetor solar','Toalha','Dinheiro para taxa local','Disposição para caminhar'],
+    fotos:['./images/morro.jpg','./images/boipeba.jpg','./images/passeio-ilhas.jpg']
+  },
+  vilarosa:{
+    titulo:'Fazenda Vila Rosa', categoria:'Cacau e Chocolate', img:'./images/vila-rosa.jpg', valor:'A partir de R$150 por pessoa', horario:'10h às 13h', nivel:'Leve', local:'Fazenda Vila Rosa',
+    resumo:'Uma imersão na história do cacau com natureza, casa histórica e degustação de chocolate artesanal.',
+    descricao:'O passeio à Vila Rosa apresenta o processo do cacau ao chocolate, com caminhada leve, paisagens naturais, visita à casa sede histórica e degustação.',
+    roteiro:['Embarque na hospedagem','Chegada à Fazenda Vila Rosa','Visita à fazenda de cacau','Tour pela casa histórica','Trilha leve e natureza','Degustação de chocolate artesanal','Retorno às 13h'],
+    recomendacoes:['Roupas leves','Calçado confortável','Câmera ou celular para fotos','Dinheiro ou cartão para extras'],
+    fotos:['./images/vila-rosa.jpg','./images/hero-itacare.jpg','./images/4-praias.jpg']
+  }
+};
 
+const params = new URLSearchParams(window.location.search);
+const id = params.get('p') || 'ilhas';
+const passeio = dados[id] || dados.ilhas;
+
+const msg = encodeURIComponent(`Olá! Gostaria de informações sobre ${passeio.titulo}.`);
+
+document.title = `${passeio.titulo} | Axé Turismo & Aventura`;
+document.getElementById('hero').style.backgroundImage = `url('${passeio.img}')`;
+document.getElementById('categoria').textContent = passeio.categoria;
+document.getElementById('titulo').textContent = passeio.titulo;
+document.getElementById('resumo').textContent = passeio.resumo;
+document.getElementById('descricao').textContent = passeio.descricao;
+document.getElementById('valor').textContent = passeio.valor;
+document.getElementById('horario').textContent = passeio.horario;
+document.getElementById('nivel').textContent = passeio.nivel;
+document.getElementById('local').textContent = passeio.local;
+document.getElementById('whatsapp').href = `https://wa.me/557399769225?text=${msg}`;
+document.getElementById('whatsapp2').href = `https://wa.me/557399769225?text=${msg}`;
+
+const roteiro = document.getElementById('roteiro');
+passeio.roteiro.forEach(item => {
+  const li = document.createElement('li');
+  li.textContent = item;
+  roteiro.appendChild(li);
+});
+
+const recomendacoes = document.getElementById('recomendacoes');
+passeio.recomendacoes.forEach(item => {
+  const li = document.createElement('li');
+  li.textContent = item;
+  recomendacoes.appendChild(li);
+});
+
+const galeria = document.getElementById('galeria');
+passeio.fotos.forEach(src => {
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = passeio.titulo;
+  galeria.appendChild(img);
+});
+</script>
+
+</body>
+</html>
