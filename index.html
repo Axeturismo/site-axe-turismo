@@ -1,6 +1,30 @@
-# Site Axé Turismo & Aventura — Estrutura Profissional
+# Código completo corrigido — todos os passeios
 
-## PASSO 1 — Substitua seu `index.html` inteiro por este código
+Agora sim, com todos os passeios:
+
+* Passeio das Ilhas
+* Trilha das 4 Praias + Tijuipe
+* Jeribucaçu + Cachoeira da Usina
+* Rafting
+* Boipeba
+* Morro de São Paulo
+* Fazenda Vila Rosa
+* Translados
+
+Para ficar mais fácil, você vai usar só 2 arquivos:
+
+```text
+index.html
+roteiro.html
+```
+
+O botão “Ver detalhes” de cada passeio vai abrir a página `roteiro.html` com o passeio correto.
+
+---
+
+# 1. Código do index.html
+
+Apague tudo do seu `index.html` atual e cole este código:
 
 ```html
 <!DOCTYPE html>
@@ -8,412 +32,357 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Axé Turismo & Aventura</title>
+  <title>Axé Turismo & Aventura | Passeios em Itacaré</title>
+  <meta name="description" content="Passeios em Itacaré, trilhas, cachoeiras, rafting, Boipeba, Morro de São Paulo e translados." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    :root{
+      --verde:#18b85f;
+      --verde-escuro:#063f2a;
+      --laranja:#ff9800;
+      --preto:#111;
+      --branco:#fff;
+      --cinza:#f5f7f6;
+      --texto:#25313d;
+      --sombra:0 18px 45px rgba(0,0,0,.14);
+      --radius:24px;
     }
 
-    body {
-      background: #f5f5f5;
-      color: #222;
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Montserrat',sans-serif;background:#fff;color:var(--texto);overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+
+    header{
+      position:fixed;top:0;left:0;width:100%;z-index:999;
+      background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+      box-shadow:0 8px 28px rgba(0,0,0,.08)
     }
 
-    header {
-      background: white;
-      padding: 18px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    .nav{
+      width:min(1180px,92%);margin:auto;height:82px;
+      display:flex;align-items:center;justify-content:space-between;gap:22px
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-      font-size: 24px;
-      color: #0d7c45;
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--verde-escuro)}
+    .brand img{width:62px;height:62px;object-fit:contain}
+    .brand span{line-height:1.1}
+
+    .menu{display:flex;gap:22px;font-size:13px;font-weight:900;text-transform:uppercase}
+    .menu a:hover{color:var(--laranja)}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:15px 24px;border-radius:999px;background:var(--verde);color:#fff;
+      font-weight:900;font-size:14px;box-shadow:0 14px 30px rgba(24,184,95,.25);
+      transition:.25s ease
+    }
+    .btn:hover{transform:translateY(-3px);background:#12a653}
+    .btn.orange{background:var(--laranja);box-shadow:0 14px 30px rgba(255,152,0,.28)}
+
+    .hero{
+      min-height:100vh;padding:150px 0 80px;display:flex;align-items:center;color:#fff;
+      background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.42),rgba(0,0,0,.12)),url('./images/hero-itacare.jpg') center/cover no-repeat
     }
 
-    .logo img {
-      width: 55px;
-    }
+    .hero-content{width:min(1180px,92%);margin:auto;max-width:780px}
+    .tag{display:inline-flex;background:var(--laranja);color:#fff;padding:10px 16px;border-radius:999px;font-weight:900;font-size:13px;text-transform:uppercase;margin-bottom:20px}
+    .hero h1{font-size:clamp(42px,7vw,82px);line-height:.95;letter-spacing:-2.4px;margin-bottom:22px;font-weight:900}
+    .hero p{font-size:clamp(17px,2vw,22px);line-height:1.65;color:rgba(255,255,255,.9);margin-bottom:32px;max-width:700px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 
-    nav {
-      display: flex;
-      gap: 30px;
-    }
+    section{padding:90px 0}
+    .container{width:min(1180px,92%);margin:auto}
 
-    nav a {
-      text-decoration: none;
-      color: #222;
-      font-weight: bold;
-    }
+    .section-title{text-align:center;margin-bottom:52px}
+    .section-title span{color:var(--laranja);font-size:13px;text-transform:uppercase;letter-spacing:1.4px;font-weight:900}
+    .section-title h2{font-size:clamp(30px,4vw,50px);margin:10px 0 14px;color:var(--preto);letter-spacing:-1.2px}
+    .section-title p{max-width:760px;margin:auto;line-height:1.7;color:#66717c}
 
-    .btn-header {
-      background: #1ec863;
-      color: white;
-      padding: 14px 25px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);transition:.28s ease;display:flex;flex-direction:column}
+    .card:hover{transform:translateY(-8px)}
 
-    .hero {
-      height: 90vh;
-      background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./images/hero-itacare.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
+    .carousel{height:250px;position:relative;overflow:hidden;background:#ddd}
+    .carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+    .carousel img.active{opacity:1}
 
-    .hero-content h1 {
-      font-size: 60px;
-      margin-bottom: 20px;
-    }
+    .price{position:absolute;top:16px;left:16px;z-index:2;background:var(--laranja);color:#fff;padding:9px 14px;border-radius:999px;font-weight:900;font-size:13px}
+    .card-body{padding:25px;display:flex;flex-direction:column;flex:1}
+    .card h3{font-size:18px;line-height:1.25;text-transform:uppercase;color:#111;margin-bottom:12px}
+    .card p{line-height:1.65;color:#66717c;font-size:14px;margin-bottom:18px;flex:1}
+    .features{display:grid;gap:8px;margin-bottom:22px;color:#2d3944;font-size:14px}
+    .features div::before{content:'✓';color:var(--laranja);font-weight:900;margin-right:8px}
 
-    .hero-content p {
-      font-size: 22px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
-    }
+    .dark{background:linear-gradient(135deg,#062d21,#111);color:#fff}
+    .dark .section-title h2,.dark .section-title p{color:#fff}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .why-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:28px;border-radius:var(--radius)}
+    .why-card strong{display:block;font-size:18px;margin-bottom:10px;color:#fff}
+    .why-card p{line-height:1.6;color:rgba(255,255,255,.78);font-size:14px}
 
-    .hero-buttons {
-      margin-top: 35px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+    .transfers{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+    .transfer-images{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .transfer-images img{height:250px;width:100%;object-fit:contain;background:#0b0b0b;border-radius:var(--radius);padding:15px;box-shadow:var(--sombra)}
+    .transfer-text h2{font-size:clamp(32px,4vw,50px);line-height:1.05;color:#111;margin-bottom:20px}
+    .transfer-text p{line-height:1.8;color:#5d6873;margin-bottom:24px}
 
-    .hero-buttons a {
-      padding: 15px 28px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .gallery img{height:240px;width:100%;object-fit:cover;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
 
-    .btn-green {
-      background: #1ec863;
-      color: white;
-    }
+    .cta{background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.45)),url('./images/passeio-ilhas.jpg') center/cover no-repeat;color:#fff;text-align:center;padding:110px 0}
+    .cta h2{font-size:clamp(34px,5vw,62px);line-height:1;margin-bottom:18px}
+    .cta p{max-width:700px;margin:0 auto 30px;line-height:1.7;color:rgba(255,255,255,.88)}
 
-    .btn-white {
-      background: white;
-      color: #111;
-    }
+    footer{background:#071b14;color:rgba(255,255,255,.8);padding:42px 0;text-align:center}
+    footer strong{color:#fff}
+    .float-whatsapp{position:fixed;right:22px;bottom:22px;width:62px;height:62px;border-radius:50%;background:var(--verde);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;z-index:1000;box-shadow:0 18px 35px rgba(0,0,0,.25)}
 
-    section {
-      padding: 80px 5%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-title h2 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 25px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .carousel {
-      position: relative;
-      width: 100%;
-      height: 280px;
-      overflow: hidden;
-    }
-
-    .carousel img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      position: absolute;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .carousel img.active {
-      opacity: 1;
-    }
-
-    .price {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: orange;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-weight: bold;
-      z-index: 10;
-    }
-
-    .card-content {
-      padding: 30px;
-    }
-
-    .card-content h3 {
-      font-size: 34px;
-      margin-bottom: 15px;
-    }
-
-    .card-content p {
-      line-height: 1.7;
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    .card-content a {
-      display: inline-block;
-      background: #1ec863;
-      color: white;
-      text-decoration: none;
-      padding: 14px 25px;
-      border-radius: 40px;
-      font-weight: bold;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 20px;
-    }
-
-    .whatsapp {
-      position: fixed;
-      right: 25px;
-      bottom: 25px;
-      width: 70px;
-      height: 70px;
-      background: #1ec863;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-decoration: none;
-      font-size: 32px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      z-index: 999;
-    }
-
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    @media(max-width: 900px) {
-      nav {
-        display: none;
-      }
-
-      .hero-content h1 {
-        font-size: 40px;
-      }
-
-      .hero-content p {
-        font-size: 18px;
-      }
-    }
+    @media(max-width:920px){.menu{display:none}.cards,.why-grid{grid-template-columns:1fr 1fr}.transfers{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.nav{height:72px}.brand img{width:52px;height:52px}.brand span{font-size:13px}.hero{padding-top:120px}.cards,.why-grid,.gallery,.transfer-images{grid-template-columns:1fr}.hero-actions .btn{width:100%}.carousel{height:220px}}
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <img src="./images/logo.png">
-    <span>Axé Turismo & Aventura</span>
-  </div>
+  <nav class="nav">
+    <a href="#inicio" class="brand">
+      <img src="./images/logo.png" alt="Axé Turismo & Aventura">
+      <span>Axé Turismo &<br>Aventura</span>
+    </a>
 
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#passeios">Passeios</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#contato">Contato</a>
+    <div class="menu">
+      <a href="#inicio">Início</a>
+      <a href="#passeios">Passeios</a>
+      <a href="#translados">Translados</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+    </div>
+
+    <a class="btn" href="https://wa.me/557399769225" target="_blank">Reservar Agora</a>
   </nav>
-
-  <a class="btn-header" href="https://wa.me/5573999999999">Reservar</a>
 </header>
 
-<section class="hero" id="inicio">
-  <div class="hero-content">
-    <h1>Descubra o Paraíso de Itacaré</h1>
-
-    <p>
-      Passeios incríveis, praias paradisíacas, cachoeiras, aventura,
-      trilhas e experiências inesquecíveis com conforto e segurança.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#passeios" class="btn-green">Ver Passeios</a>
-      <a href="https://wa.me/5573999999999" class="btn-white">Falar no WhatsApp</a>
-    </div>
-  </div>
-</section>
-
-<section id="passeios">
-
-  <div class="section-title">
-    <h2>Nossos Passeios</h2>
-    <p>Escolha sua próxima aventura</p>
-  </div>
-
-  <div class="cards">
-
-    <div class="card">
-      <div class="carousel">
-        <div class="price">R$200</div>
-
-        <img class="active" src="./images/rafting.jpg">
-        <img src="./images/jeribucacu.jpg">
-        <img src="./images/4-praias.jpg">
-      </div>
-
-      <div class="card-content">
-        <h3>Rafting</h3>
-
-        <p>
-          Adrenalina no Rio de Contas com instrutores experientes,
-          corredeiras emocionantes e muito contato com a natureza.
-        </p>
-
-        <a href="rafting.html">Ver detalhes</a>
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <span class="tag">Itacaré e região</span>
+      <h1>Descubra os paraísos de Itacaré</h1>
+      <p>Viva experiências inesquecíveis entre praias paradisíacas, cachoeiras, trilhas, rafting, ilhas e translados com conforto e segurança.</p>
+      <div class="hero-actions">
+        <a class="btn orange" href="#passeios">Ver Passeios</a>
+        <a class="btn" href="https://wa.me/557399769225" target="_blank">Chamar no WhatsApp</a>
       </div>
     </div>
+  </section>
 
-    <div class="card">
-      <div class="carousel">
-        <div class="price">A partir de R$500</div>
-
-        <img class="active" src="./images/morro.jpg">
-        <img src="./images/boipeba.jpg">
-        <img src="./images/passeio-ilhas.jpg">
+  <section id="passeios">
+    <div class="container">
+      <div class="section-title">
+        <span>Passeios mais visitados</span>
+        <h2>Escolha sua próxima aventura</h2>
+        <p>Roteiros selecionados para conhecer o melhor de Itacaré, Península de Maraú, Boipeba e Morro de São Paulo.</p>
       </div>
 
-      <div class="card-content">
-        <h3>Morro de São Paulo</h3>
+      <div class="cards">
 
-        <p>
-          Piscinas naturais, praias paradisíacas e um dos destinos mais desejados da Bahia.
-        </p>
+        <article class="card">
+          <div class="carousel">
+            <span class="price">A partir de R$250</span>
+            <img class="active" src="./images/passeio-ilhas.jpg" alt="Passeio das Ilhas">
+            <img src="./images/boipeba.jpg" alt="Boipeba">
+            <img src="./images/morro.jpg" alt="Morro de São Paulo">
+          </div>
+          <div class="card-body">
+            <h3>Passeio das Ilhas</h3>
+            <p>Lancha rápida pela Baía de Camamu com paradas em Pedra Furada, Barra Grande, Goió, Campinhos e Taipu de Fora em períodos favoráveis.</p>
+            <div class="features"><div>Saída 07h20</div><div>Lancha rápida</div><div>Retorno previsto 18h</div></div>
+            <a class="btn" href="roteiro.html?p=ilhas">Ver detalhes</a>
+          </div>
+        </article>
 
-        <a href="morro.html">Ver detalhes</a>
+        <article class="card">
+          <div class="carousel">
+            <span class="price">A partir de R$120</span>
+            <img class="active" src="./images/4-praias.jpg" alt="4 Praias">
+            <img src="./images/jeribucacu.jpg" alt="Jeribucaçu">
+            <img src="./images/hero-itacare.jpg" alt="Itacaré">
+          </div>
+          <div class="card-body">
+            <h3>Trilha das 4 Praias + Tijuipe</h3>
+            <p>Itacarezinho, Camboinha, Havaizinho, Engenhoca e Cachoeira do Tijuipe em um roteiro completo de natureza, mar e trilha.</p>
+            <div class="features"><div>Saída 09h15</div><div>Nível moderado</div><div>Cachoeira inclusa no roteiro</div></div>
+            <a class="btn" href="roteiro.html?p=4praias">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="carousel">
+            <span class="price">A partir de R$120</span>
+            <img class="active" src="./images/jeribucacu.jpg" alt="Jeribucaçu">
+            <img src="./images/4-praias.jpg" alt="4 Praias">
+            <img src="./images/hero-itacare.jpg" alt="Itacaré">
+          </div>
+          <div class="card-body">
+            <h3>Jeribucaçu + Usina</h3>
+            <p>Trilha pela Mata Atlântica, passagem pelo manguezal, Cachoeira da Usina e a paradisíaca Praia de Jeribucaçu.</p>
+            <div class="features"><div>Saída 09h15</div><div>Trilha e cachoeira</div><div>Praia paradisíaca</div></div>
+            <a class="btn" href="roteiro.html?p=jeribucacu">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="carousel">
+            <span class="price">R$200</span>
+            <img class="active" src="./images/rafting.jpg" alt="Rafting">
+            <img src="./images/jeribucacu.jpg" alt="Natureza">
+            <img src="./images/4-praias.jpg" alt="Trilha">
+          </div>
+          <div class="card-body">
+            <h3>Rafting</h3>
+            <p>Adrenalina no Rio de Contas, em Taboquinhas, com equipamentos de segurança, instrutores e descida pelas corredeiras.</p>
+            <div class="features"><div>10h às 13h30</div><div>Rio de Contas</div><div>Com instrutores</div></div>
+            <a class="btn" href="roteiro.html?p=rafting">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="carousel">
+            <span class="price">A partir de R$550</span>
+            <img class="active" src="./images/boipeba.jpg" alt="Boipeba">
+            <img src="./images/passeio-ilhas.jpg" alt="Ilhas">
+            <img src="./images/morro.jpg" alt="Morro">
+          </div>
+          <div class="card-body">
+            <h3>Ilha de Boipeba</h3>
+            <p>Um dia especial em Boipeba com Moreré, Bainema, Castelhanos, banco de areia e paisagens de águas cristalinas.</p>
+            <div class="features"><div>Saída 06h</div><div>Lancha rápida</div><div>Destino premium</div></div>
+            <a class="btn" href="roteiro.html?p=boipeba">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="carousel">
+            <span class="price">A partir de R$500</span>
+            <img class="active" src="./images/morro.jpg" alt="Morro de São Paulo">
+            <img src="./images/boipeba.jpg" alt="Boipeba">
+            <img src="./images/passeio-ilhas.jpg" alt="Ilhas">
+          </div>
+          <div class="card-body">
+            <h3>Morro de São Paulo</h3>
+            <p>Conheça praias famosas, piscinas naturais e uma das vilas turísticas mais encantadoras da Bahia em um roteiro de dia inteiro.</p>
+            <div class="features"><div>Saída 06h</div><div>Lancha rápida</div><div>Taxa local à parte</div></div>
+            <a class="btn" href="roteiro.html?p=morro">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="carousel">
+            <span class="price">A partir de R$150</span>
+            <img class="active" src="./images/vila-rosa.jpg" alt="Fazenda Vila Rosa">
+            <img src="./images/hero-itacare.jpg" alt="Itacaré">
+            <img src="./images/4-praias.jpg" alt="Natureza">
+          </div>
+          <div class="card-body">
+            <h3>Fazenda Vila Rosa</h3>
+            <p>Imersão no mundo do cacau com casa histórica, natureza, trilha leve e degustação de chocolate artesanal.</p>
+            <div class="features"><div>10h às 13h</div><div>Cultura do cacau</div><div>Degustação</div></div>
+            <a class="btn" href="roteiro.html?p=vilarosa">Ver detalhes</a>
+          </div>
+        </article>
+
       </div>
     </div>
+  </section>
 
-    <div class="card">
-      <div class="carousel">
-        <div class="price">R$150</div>
-
-        <img class="active" src="./images/vila-rosa.jpg">
-        <img src="./images/hero-itacare.jpg">
-        <img src="./images/4-praias.jpg">
+  <section class="dark">
+    <div class="container">
+      <div class="section-title">
+        <span>Por que escolher a Axé?</span>
+        <h2>Experiência local com segurança e conforto</h2>
+        <p>Atendimento próximo, transporte confortável e roteiros pensados para você aproveitar o melhor da região.</p>
       </div>
-
-      <div class="card-content">
-        <h3>Fazenda Vila Rosa</h3>
-
-        <p>
-          Conheça o processo do cacau ao chocolate em uma fazenda histórica cheia de natureza.
-        </p>
-
-        <a href="vila-rosa.html">Ver detalhes</a>
+      <div class="why-grid">
+        <div class="why-card"><strong>Guias experientes</strong><p>Equipe preparada para conduzir os passeios com responsabilidade.</p></div>
+        <div class="why-card"><strong>Atendimento personalizado</strong><p>Informações claras, suporte no WhatsApp e ajuda na escolha do roteiro ideal.</p></div>
+        <div class="why-card"><strong>Natureza e aventura</strong><p>Trilhas, praias, cachoeiras, ilhas, rafting e experiências para todos os estilos.</p></div>
+        <div class="why-card"><strong>Transporte confortável</strong><p>Veículos modernos para passeios, transfers e deslocamentos privativos.</p></div>
+        <div class="why-card"><strong>Roteiros completos</strong><p>Experiências organizadas para aproveitar melhor cada destino.</p></div>
+        <div class="why-card"><strong>Reserva rápida</strong><p>Contato direto para tirar dúvidas e garantir sua vaga com antecedência.</p></div>
       </div>
     </div>
+  </section>
 
+  <section id="translados">
+    <div class="container transfers">
+      <div class="transfer-images">
+        <img src="./images/van.jpg" alt="Van para translados">
+        <img src="./images/spin.jpg" alt="Carro para translados" onerror="this.style.display='none'">
+      </div>
+      <div class="transfer-text">
+        <span class="tag">Translados & Serviços</span>
+        <h2>Conforto e segurança em todos os trajetos</h2>
+        <p>Realizamos transfers para aeroportos, hotéis, pousadas, passeios turísticos, eventos e deslocamentos privativos com pontualidade e atendimento personalizado.</p>
+        <a class="btn" target="_blank" href="https://wa.me/557399769225?text=Olá! Gostaria de solicitar um orçamento de translado.">Solicitar orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" style="background:var(--cinza)">
+    <div class="container">
+      <div class="section-title">
+        <span>Galeria</span>
+        <h2>Momentos que viram lembranças</h2>
+        <p>Alguns cenários que fazem parte das experiências da Axé Turismo & Aventura.</p>
+      </div>
+      <div class="gallery">
+        <img src="./images/4-praias.jpg" alt="4 Praias">
+        <img src="./images/boipeba.jpg" alt="Boipeba">
+        <img src="./images/rafting.jpg" alt="Rafting">
+        <img src="./images/jeribucacu.jpg" alt="Jeribucaçu">
+        <img src="./images/morro.jpg" alt="Morro de São Paulo">
+        <img src="./images/vila-rosa.jpg" alt="Vila Rosa">
+        <img src="./images/passeio-ilhas.jpg" alt="Passeio das Ilhas">
+        <img src="./images/hero-itacare.jpg" alt="Itacaré">
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contato">
+    <div class="container">
+      <h2>Pronto para viver Itacaré de verdade?</h2>
+      <p>Chame no WhatsApp e receba atendimento para escolher o passeio ideal para seu perfil, data e estilo de viagem.</p>
+      <a class="btn orange" href="https://wa.me/557399769225" target="_blank">Falar com a Axé Turismo</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>Axé Turismo & Aventura</strong></p>
+    <p>Instagram: @Itacare_axe_turismo_aventura</p>
+    <p>Transformando sonhos em realidade.</p>
   </div>
-</section>
-
-<section id="galeria">
-
-  <div class="section-title">
-    <h2>Galeria</h2>
-    <p>Um pouco do que você irá viver</p>
-  </div>
-
-  <div class="gallery">
-    <img src="./images/4-praias.jpg">
-    <img src="./images/boipeba.jpg">
-    <img src="./images/rafting.jpg">
-    <img src="./images/jeribucacu.jpg">
-    <img src="./images/morro.jpg">
-    <img src="./images/vila-rosa.jpg">
-  </div>
-</section>
-
-<footer id="contato">
-  <h2>Axé Turismo & Aventura</h2>
-  <br>
-  <p>Transformando sonhos em realidade.</p>
-  <br>
-  <p>Itacaré - Bahia</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/5573999999999">
-  ☎
-</a>
+<a class="float-whatsapp" href="https://wa.me/557399769225" target="_blank">☏</a>
 
 <script>
-
-const carousels = document.querySelectorAll('.carousel');
-
-carousels.forEach(carousel => {
-  const images = carousel.querySelectorAll('img');
-
-  let index = 0;
-
-  setInterval(() => {
-    images[index].classList.remove('active');
-
-    index = (index + 1) % images.length;
-
-    images[index].classList.add('active');
-  }, 3000);
-});
-
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const imgs = carousel.querySelectorAll('img');
+    let index = 0;
+    if(imgs.length <= 1) return;
+    setInterval(() => {
+      imgs[index].classList.remove('active');
+      index = (index + 1) % imgs.length;
+      imgs[index].classList.add('active');
+    }, 3000);
+  });
 </script>
 
 </body>
@@ -422,128 +391,223 @@ carousels.forEach(carousel => {
 
 ---
 
-# PASSO 2 — Criar páginas individuais
+# 2. Código do roteiro.html
 
-Crie novos arquivos:
+Crie um novo arquivo chamado:
 
 ```text
-rafting.html
-morro.html
-vila-rosa.html
+roteiro.html
 ```
 
----
-
-# PASSO 3 — Exemplo de página individual
-
-## rafting.html
+Cole este código nele:
 
 ```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roteiro | Axé Turismo & Aventura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #f5f5f5;
-}
+  <style>
+    :root{--verde:#18b85f;--laranja:#ff9800;--preto:#111;--cinza:#f5f7f6;--texto:#25313d;--radius:24px;--sombra:0 18px 45px rgba(0,0,0,.14)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Montserrat',sans-serif;background:#fff;color:var(--texto)}
+    a{text-decoration:none;color:inherit}
 
-.hero {
-  height: 70vh;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./images/rafting.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-}
+    header{position:fixed;top:0;left:0;width:100%;z-index:999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+    .nav{width:min(1180px,92%);margin:auto;height:80px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:900;color:#063f2a}
+    .btn{display:inline-flex;padding:15px 24px;border-radius:999px;background:var(--verde);color:#fff;font-weight:900;font-size:14px;box-shadow:0 14px 30px rgba(24,184,95,.25)}
+    .btn.orange{background:var(--laranja)}
 
-.hero h1 {
-  font-size: 60px;
-}
+    .hero{min-height:75vh;padding:130px 0 70px;display:flex;align-items:center;color:#fff;background-size:cover;background-position:center;position:relative}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.42),rgba(0,0,0,.12))}
+    .hero-content{width:min(1180px,92%);margin:auto;position:relative;z-index:2;max-width:780px}
+    .tag{display:inline-flex;background:var(--laranja);color:#fff;padding:10px 16px;border-radius:999px;font-weight:900;font-size:13px;text-transform:uppercase;margin-bottom:20px}
+    h1{font-size:clamp(40px,6vw,74px);line-height:.98;letter-spacing:-2px;margin-bottom:22px;font-weight:900}
+    .hero p{font-size:clamp(17px,2vw,22px);line-height:1.65;color:rgba(255,255,255,.9);margin-bottom:28px}
 
-.content {
-  max-width: 1100px;
-  margin: auto;
-  padding: 80px 20px;
-}
+    section{padding:80px 0}
+    .container{width:min(1100px,92%);margin:auto}
+    .grid{display:grid;grid-template-columns:1.4fr .8fr;gap:36px;align-items:start}
+    .box{background:#fff;border-radius:var(--radius);box-shadow:var(--sombra);padding:32px}
+    h2{font-size:34px;color:#111;margin-bottom:18px}
+    h3{font-size:22px;color:#111;margin:28px 0 12px}
+    p,li{line-height:1.8;color:#5d6873;font-size:16px}
+    ul{padding-left:20px}
 
-.content h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
-}
+    .info{display:grid;gap:12px}
+    .info div{background:#f5f7f6;padding:16px;border-radius:16px;font-weight:800;color:#25313d}
+    .info span{color:var(--laranja);display:block;font-size:13px;text-transform:uppercase;margin-bottom:4px}
 
-.content p {
-  line-height: 1.8;
-  color: #555;
-  font-size: 20px;
-}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+    .gallery img{width:100%;height:230px;object-fit:cover;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+    .back{display:inline-flex;margin-bottom:20px;color:var(--verde);font-weight:900}
+    footer{background:#071b14;color:#fff;text-align:center;padding:40px 20px}
 
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  background: #1ec863;
-  color: white;
-  text-decoration: none;
-  padding: 16px 30px;
-  border-radius: 40px;
-  font-weight: bold;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 50px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-</style>
+    @media(max-width:850px){.grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.nav{height:70px}.btn{padding:12px 18px}}
+  </style>
 </head>
 <body>
 
-<section class="hero">
-  <h1>Rafting em Itacaré</h1>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="brand">Axé Turismo & Aventura</a>
+    <a class="btn" href="https://wa.me/557399769225" target="_blank">Reservar Agora</a>
+  </nav>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <span class="tag" id="categoria">Passeio</span>
+    <h1 id="titulo">Carregando...</h1>
+    <p id="resumo"></p>
+    <a class="btn orange" id="whatsapp" href="#" target="_blank">Reservar no WhatsApp</a>
+  </div>
 </section>
 
-<section class="content">
+<section>
+  <div class="container">
+    <a href="index.html#passeios" class="back">← Voltar para os passeios</a>
+    <div class="grid">
+      <div class="box">
+        <h2>Sobre o passeio</h2>
+        <p id="descricao"></p>
 
-<h2>Aventura e Adrenalina</h2>
+        <h3>Roteiro</h3>
+        <ul id="roteiro"></ul>
 
-<p>
-Desça as corredeiras do Rio de Contas em uma experiência emocionante,
-com instrutores especializados, equipamentos de segurança e paisagens incríveis.
-</p>
+        <h3>Recomendações</h3>
+        <ul id="recomendacoes"></ul>
 
-<p>
-O passeio possui duração média de 3h30 e inclui transporte,
-instruções, equipamentos e muita diversão.
-</p>
+        <div class="gallery" id="galeria"></div>
+      </div>
 
-<a class="btn" href="https://wa.me/5573999999999">
-Reservar Agora
-</a>
-
-<div class="gallery">
-  <img src="./images/rafting.jpg">
-  <img src="./images/jeribucacu.jpg">
-  <img src="./images/4-praias.jpg">
-</div>
-
+      <aside class="box">
+        <h2>Informações</h2>
+        <div class="info">
+          <div><span>Valor</span><p id="valor"></p></div>
+          <div><span>Horário</span><p id="horario"></p></div>
+          <div><span>Nível</span><p id="nivel"></p></div>
+          <div><span>Local</span><p id="local"></p></div>
+        </div>
+        <br>
+        <a class="btn" id="whatsapp2" href="#" target="_blank">Chamar no WhatsApp</a>
+      </aside>
+    </div>
+  </div>
 </section>
+
+<footer>
+  <strong>Axé Turismo & Aventura</strong><br><br>
+  Transformando sonhos em realidade.
+</footer>
+
+<script>
+const dados = {
+  ilhas:{
+    titulo:'Passeio das Ilhas', categoria:'Península de Maraú', img:'./images/passeio-ilhas.jpg', valor:'A partir de R$250 por pessoa', horario:'Saída 07h20 | Retorno previsto 18h', nivel:'Leve', local:'Baía de Camamu e Península de Maraú',
+    resumo:'Explore as águas tranquilas da Baía de Camamu em uma experiência completa de lancha rápida.',
+    descricao:'Saída de Itacaré com destino a Camamu, onde embarcamos em lancha rápida para conhecer ilhas, praias e cenários paradisíacos da Península de Maraú.',
+    roteiro:['Saída de Itacaré às 07h20','Embarque em lancha rápida em Camamu','Ilha da Pedra Furada','Barra Grande','Ilha do Goió','Ilha Campinhos','Taipu de Fora em períodos favoráveis','Retorno para Itacaré no final da tarde'],
+    recomendacoes:['Roupas leves','Protetor solar','Roupa de banho','Toalha','Dinheiro ou cartão para despesas extras'],
+    fotos:['./images/passeio-ilhas.jpg','./images/boipeba.jpg','./images/morro.jpg']
+  },
+  '4praias':{
+    titulo:'Trilha das 4 Praias + Cachoeira do Tijuipe', categoria:'Trilha e Cachoeira', img:'./images/4-praias.jpg', valor:'A partir de R$120 por pessoa', horario:'Saída 09h15', nivel:'Moderado', local:'Itacarezinho, Camboinha, Havaizinho, Engenhoca e Tijuipe',
+    resumo:'Conheça algumas das praias mais bonitas de Itacaré em um roteiro completo com trilha e cachoeira.',
+    descricao:'O roteiro combina praias paradisíacas, pequenas trilhas em meio à natureza e finalização na Cachoeira do Tijuipe.',
+    roteiro:['Praia de Itacarezinho','Praia de Camboinha','Praia de Havaizinho','Praia de Engenhoca','Cachoeira do Tijuipe','Retorno no final da tarde'],
+    recomendacoes:['Calçado confortável','Roupas leves','Protetor solar','Repelente','Toalha','Roupa de banho'],
+    fotos:['./images/4-praias.jpg','./images/jeribucacu.jpg','./images/hero-itacare.jpg']
+  },
+  jeribucacu:{
+    titulo:'Jeribucaçu + Cachoeira da Usina', categoria:'Trilha, Mangue e Praia', img:'./images/jeribucacu.jpg', valor:'A partir de R$120 por pessoa', horario:'Saída 09h15 | Retorno 16h30', nivel:'Moderado', local:'Praia de Jeribucaçu e Cachoeira da Usina',
+    resumo:'Uma das trilhas mais completas de Itacaré, com cachoeira, manguezal, Mata Atlântica e praia paradisíaca.',
+    descricao:'O passeio começa com trilha até a Cachoeira da Usina e segue pela Mata Atlântica até a Praia de Jeribucaçu, passando por manguezal e cenários naturais incríveis.',
+    roteiro:['Embarque na pousada','Trilha até a Cachoeira da Usina','Parada para banho e fotos','Trilha pela Mata Atlântica','Passagem pelo manguezal','Chegada à Praia de Jeribucaçu','Tempo livre na praia','Retorno pela trilha'],
+    recomendacoes:['Calçado confortável para trilha','Roupa de banho','Protetor solar','Repelente','Toalha','Evitar para pessoas com mobilidade reduzida'],
+    fotos:['./images/jeribucacu.jpg','./images/4-praias.jpg','./images/hero-itacare.jpg']
+  },
+  rafting:{
+    titulo:'Rafting', categoria:'Aventura', img:'./images/rafting.jpg', valor:'R$200 por pessoa', horario:'10h às 13h30', nivel:'Aventura moderada', local:'Rio de Contas, Taboquinhas',
+    resumo:'Adrenalina e diversão no Rio de Contas com instrutores e equipamentos de segurança.',
+    descricao:'O rafting acontece em Taboquinhas, com descida pelas corredeiras do Rio de Contas, alternando momentos de adrenalina e contemplação da natureza.',
+    roteiro:['Embarque na pousada','Transporte até Taboquinhas','Recepção e equipamentos','Aula de segurança','Descida de 3 a 4 km pelo Rio de Contas','Salto opcional no rio','Retorno para Itacaré'],
+    recomendacoes:['Roupa que possa molhar','Sandália fechada ou tênis','Protetor solar','Repelente','Dinheiro ou cartão para extras'],
+    fotos:['./images/rafting.jpg','./images/jeribucacu.jpg','./images/4-praias.jpg']
+  },
+  boipeba:{
+    titulo:'Ilha de Boipeba', categoria:'Destino Premium', img:'./images/boipeba.jpg', valor:'A partir de R$550 por pessoa', horario:'Saída 06h | Retorno no final da tarde', nivel:'Leve', local:'Boipeba, Moreré, Bainema e Castelhanos',
+    resumo:'Um dia inesquecível em Boipeba, com águas cristalinas, piscinas naturais e paisagens paradisíacas.',
+    descricao:'Saída de Itacaré com destino a Cairu/Valença, embarque em lancha rápida e roteiro por alguns dos pontos mais bonitos de Boipeba.',
+    roteiro:['Saída de Itacaré às 06h','Lancha rápida para Boipeba','Piscinas naturais de Moreré','Praia de Bainema','Ponta dos Castelhanos','Bancada de Areia','Cova da Onça','Retorno no final da tarde'],
+    recomendacoes:['Roupa de banho','Toalha','Protetor solar','Óculos de sol','Dinheiro ou cartão para extras'],
+    fotos:['./images/boipeba.jpg','./images/passeio-ilhas.jpg','./images/morro.jpg']
+  },
+  morro:{
+    titulo:'Morro de São Paulo', categoria:'Praias e Piscinas Naturais', img:'./images/morro.jpg', valor:'A partir de R$500 por pessoa + taxa local', horario:'Saída 06h | Retorno no início da noite', nivel:'Leve', local:'Morro de São Paulo',
+    resumo:'Conheça um dos destinos mais famosos da Bahia em um roteiro de praias, piscinas naturais e vila turística.',
+    descricao:'O passeio inclui deslocamento terrestre até Valença e travessia de lancha rápida até Morro de São Paulo, onde o visitante aproveita praias famosas e piscinas naturais.',
+    roteiro:['Saída de Itacaré às 06h','Deslocamento até Valença','Lancha rápida até Morro','Primeira Praia','Segunda Praia','Terceira Praia','Quarta Praia','Retorno às 16h'],
+    recomendacoes:['Roupa de banho','Protetor solar','Toalha','Dinheiro para taxa local','Disposição para caminhar'],
+    fotos:['./images/morro.jpg','./images/boipeba.jpg','./images/passeio-ilhas.jpg']
+  },
+  vilarosa:{
+    titulo:'Fazenda Vila Rosa', categoria:'Cacau e Chocolate', img:'./images/vila-rosa.jpg', valor:'A partir de R$150 por pessoa', horario:'10h às 13h', nivel:'Leve', local:'Fazenda Vila Rosa',
+    resumo:'Uma imersão na história do cacau com natureza, casa histórica e degustação de chocolate artesanal.',
+    descricao:'O passeio à Vila Rosa apresenta o processo do cacau ao chocolate, com caminhada leve, paisagens naturais, visita à casa sede histórica e degustação.',
+    roteiro:['Embarque na hospedagem','Chegada à Fazenda Vila Rosa','Visita à fazenda de cacau','Tour pela casa histórica','Trilha leve e natureza','Degustação de chocolate artesanal','Retorno às 13h'],
+    recomendacoes:['Roupas leves','Calçado confortável','Câmera ou celular para fotos','Dinheiro ou cartão para extras'],
+    fotos:['./images/vila-rosa.jpg','./images/hero-itacare.jpg','./images/4-praias.jpg']
+  }
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get('p') || 'ilhas';
+const passeio = dados[id] || dados.ilhas;
+
+const msg = encodeURIComponent(`Olá! Gostaria de informações sobre ${passeio.titulo}.`);
+
+document.title = `${passeio.titulo} | Axé Turismo & Aventura`;
+document.getElementById('hero').style.backgroundImage = `url('${passeio.img}')`;
+document.getElementById('categoria').textContent = passeio.categoria;
+document.getElementById('titulo').textContent = passeio.titulo;
+document.getElementById('resumo').textContent = passeio.resumo;
+document.getElementById('descricao').textContent = passeio.descricao;
+document.getElementById('valor').textContent = passeio.valor;
+document.getElementById('horario').textContent = passeio.horario;
+document.getElementById('nivel').textContent = passeio.nivel;
+document.getElementById('local').textContent = passeio.local;
+document.getElementById('whatsapp').href = `https://wa.me/557399769225?text=${msg}`;
+document.getElementById('whatsapp2').href = `https://wa.me/557399769225?text=${msg}`;
+
+const roteiro = document.getElementById('roteiro');
+passeio.roteiro.forEach(item => {
+  const li = document.createElement('li');
+  li.textContent = item;
+  roteiro.appendChild(li);
+});
+
+const recomendacoes = document.getElementById('recomendacoes');
+passeio.recomendacoes.forEach(item => {
+  const li = document.createElement('li');
+  li.textContent = item;
+  recomendacoes.appendChild(li);
+});
+
+const galeria = document.getElementById('galeria');
+passeio.fotos.forEach(src => {
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = passeio.titulo;
+  galeria.appendChild(img);
+});
+</script>
 
 </body>
 </html>
@@ -551,13 +615,14 @@ Reservar Agora
 
 ---
 
-# PASSO 4
+# O que você precisa fazer no GitHub
 
-Depois:
+1. Abrir `index.html`
+2. Apagar tudo
+3. Colar o novo código do `index.html`
+4. Commit changes
+5. Criar arquivo novo chamado `roteiro.html`
+6. Colar o código do `roteiro.html`
+7. Commit changes
 
-1. Salve os arquivos
-2. Envie pro GitHub
-3. Aguarde o Vercel atualizar
-4. Pronto
-
-Seu site vai ficar nível profissional.
+Depois espere o Vercel atualizar.
